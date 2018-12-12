@@ -1,0 +1,100 @@
+#include<iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main()
+{
+  int cellgrid[20][20] = {0};
+  int cellgridRead[20][20] = {0};
+  int x;
+  int y;
+  char cellCin = 'y';
+  char GOL = 'y';
+  bool GameOver = false;
+  int days = 0;
+  int neighbors = 0;
+
+  cout << "Welcome to the Game of Life!" << endl;
+
+  cout << "Please input where you would like to spawn your cells:" << endl;
+  while(cellCin == 'Y' || cellCin == 'y')
+  {
+    cout << "Enter the x coordinate of the cell." << endl;
+    cin >> x;
+
+    cout << "Enter the y coordinate of the cell." << endl;
+    cin >> y;
+
+    cellgrid[y][x] = 1;
+
+    cout << "Enter more cells? Y/N" << endl;
+    cin >> cellCin;
+  }
+  for (int i = 0; i < 20; i++)
+	{
+		for(int j = 0; j < 20; j++)
+		{
+			cout << setw(2) << cellgrid[i][j];
+		}
+		cout << endl;
+	}
+  while((GOL == 'y' || GOL == 'Y') && GameOver == false)
+  {
+    days = days + 1;
+    for (int i = 0; i < 20; i++)
+    {
+
+			for(int j = 0; j < 20; j++)
+			{
+          cellgridRead[i][j] = cellgrid[i][j];
+      }
+    }
+
+    for (int i = 0; i < 20; i++)
+    {
+
+			for(int j = 0; j < 20; j++)
+      {
+        cout << "YE HA" << endl;
+        if(i+1 < 20 && cellgridRead[i+1][j] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+        if(i+1 < 20 && j+1 < 20 && cellgridRead[i+1][j+1] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+        if(j+1 < 20 && cellgridRead[i][j+1] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+        if(i-1 > -1 && j+1 < 20 && cellgridRead[i-1][j+1] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+        if(i-1 > -1 && cellgridRead[i-1][j] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+        if(i-1 > -1 && j-1 > -1 && cellgridRead[i-1][j-1] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+        if(j-1 > -1 && cellgridRead[i][j-1] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+        if(j-1 > -1 && i+1 < 20 && cellgridRead[i+1][j-1] == 1)
+          {
+            neighbors = neighbors+1;
+          }
+          cout << i <<" "<< j << "has " << neighbors << " neighbors" << endl;
+          neighbors = 0;
+			}
+
+		}
+    cout << "Continue to the next day: ";
+    cin >> GOL;
+  }
+}
