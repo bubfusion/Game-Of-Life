@@ -89,12 +89,20 @@ int main()
           {
             neighbors = neighbors+1;
           }
-          cout << i <<" "<< j << "has " << neighbors << " neighbors" << endl;
-          neighbors = 0;
+  
+        if(neighbors == 3 && cellgridRead[i][j] == 0)
+        {
+          cellgrid[i][j] = 1;
+        }
+        else if((neighbors == 2 || neighbors == 3) && cellgridread[i][j] == 1)
+        {
+          cellgrid[i][j] = 1;
+        }
 			}
-
+	      cout << i <<" "<< j << "has " << neighbors << " neighbors" << endl;
 		}
     cout << "Continue to the next day: ";
     cin >> GOL;
   }
+  return 0;
 }
