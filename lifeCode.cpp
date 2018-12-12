@@ -91,7 +91,7 @@ int main()
             neighbors = neighbors+1;
           }
 
-        if(neighbors == 3 && cellgridRead[i][j] == 0)
+				if(neighbors == 3 && cellgridRead[i][j] == 0)
         {
           cellgrid[i][j] = 1;
         }
@@ -103,9 +103,12 @@ int main()
         {
           cellgrid[i][j] = 0;
         }
+
+        neighbors = 0;
 			}
 
 		}
+    days = days + 1;
     cout << "Continue to the next day: ";
     cin >> GOL;
   }
