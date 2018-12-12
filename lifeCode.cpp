@@ -31,17 +31,19 @@ int main()
     cout << "Enter more cells? Y/N" << endl;
     cin >> cellCin;
   }
-  for (int i = 0; i < 20; i++)
-	{
-		for(int j = 0; j < 20; j++)
-		{
-			cout << setw(2) << cellgrid[i][j];
-		}
-		cout << endl;
-	}
+
   while((GOL == 'y' || GOL == 'Y') && GameOver == false)
   {
-    days = days + 1;
+    for (int i = 0; i < 20; i++)
+		{
+			for(int j = 0; j < 20; j++)
+			{
+				cout << setw(2) << cellgrid[i][j];
+			}
+			cout << endl;
+		}
+
+
     for (int i = 0; i < 20; i++)
     {
 
@@ -56,7 +58,6 @@ int main()
 
 			for(int j = 0; j < 20; j++)
       {
-        cout << "YE HA" << endl;
         if(i+1 < 20 && cellgridRead[i+1][j] == 1)
           {
             neighbors = neighbors+1;
@@ -89,17 +90,21 @@ int main()
           {
             neighbors = neighbors+1;
           }
-  
+
         if(neighbors == 3 && cellgridRead[i][j] == 0)
         {
           cellgrid[i][j] = 1;
         }
-        else if((neighbors == 2 || neighbors == 3) && cellgridread[i][j] == 1)
+        else if((neighbors == 2 || neighbors == 3) && cellgridRead[i][j] == 1)
         {
           cellgrid[i][j] = 1;
         }
+        else
+        {
+          cellgrid[i][j] = 0;
+        }
 			}
-	      cout << i <<" "<< j << "has " << neighbors << " neighbors" << endl;
+
 		}
     cout << "Continue to the next day: ";
     cin >> GOL;
