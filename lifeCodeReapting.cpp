@@ -43,6 +43,8 @@ int main()
 			}
 			cout << endl;
 		}
+    cout << endl;
+    cout << endl; //two cout endls so each unique grid/day is seperated from each other
 
     for (int i = 0; i < 20; i++)
     {
